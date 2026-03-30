@@ -28,15 +28,22 @@ export default function App() {
         <LoaderCard title="07 // Quantum String" description="Massive box-shadow arrays manipulated via scale transforms."><QuantumLoader /></LoaderCard>
         <LoaderCard title="08 // Void Siphon" description="Grid-based staggered animation delays simulating a gravity well."><SiphonLoader /></LoaderCard>
         <LoaderCard title="09 // Neural Collapse" description="Aggressive clip-path interpolation with exclusion blending."><NeuralLoader /></LoaderCard>
-        <LoaderCard title="10 // The Grid Smasher" description="Layout Animation: Animates CSS Grid tracks instead of transforms."><GridSmasher /></LoaderCard>
-        <LoaderCard title="11 // Moiré Illusion" description="Mobile Interactive: TAP to toggle a massive repeating gradient optical illusion."><MoireIllusion /></LoaderCard>
-        <LoaderCard title="12 // System Hijack" description="Page Interaction: TAP to trigger a fixed-position, screen-swallowing difference mask."><SystemHijack /></LoaderCard>
-        <LoaderCard title="13 // Typographic Collapse" description="Story: A narrative told purely through letter-spacing, content, and blur filters."><TypoCollapse /></LoaderCard>
-        <LoaderCard title="14 // Z-Index Slicer" description="Animation: Uses clip-path to slice a block, animating pieces through different z-indexes."><ZIndexSlicer /></LoaderCard>
-        <LoaderCard title="15 // The Truth Lens" description="Page Interaction: TAP to scan the page with a color-dodge beam."><TruthLens /></LoaderCard>
-        <LoaderCard title="16 // Alchemical Transmutation" description="Story: A geometric ritual that draws, ignites, and collapses."><Alchemy /></LoaderCard>
-        <LoaderCard title="17 // The Black Hole" description="Page Interaction: TAP to open a massive gravity well that distorts the page."><BlackHole /></LoaderCard>
-        <LoaderCard title="18 // Evolution of a Div" description="Story: A single div transforming through the history of web design."><DivEvolution /></LoaderCard>
+        <LoaderCard title="10 // The Singularity" description="30s narrative cycle: Birth, Expansion, and Heat Death of a universe."><SingularityLoader /></LoaderCard>
+        <LoaderCard title="11 // System Virus" description="Interactive distortion using backdrop-filter to 'corrupt' the UI."><VirusLoader /></LoaderCard>
+        <LoaderCard title="12 // Kinetic Reactor" description="Interactive 3D core that reacts to hover with geometry shifts."><ReactorLoader /></LoaderCard>
+        <LoaderCard title="13 // Data Ghost" description="Page-wide 'haunting' effect using backdrop-filter and mix-blend-mode."><GhostLoader /></LoaderCard>
+        <LoaderCard title="14 // Infinite Recursion" description="Fractal-like narrative zoom showing infinite rebirth."><RecursionLoader /></LoaderCard>
+        <LoaderCard title="15 // Magnetic Field" description="Interactive grid where elements 'point' toward the cursor."><MagneticLoader /></LoaderCard>
+        <LoaderCard title="16 // Entropy Clock" description="Narrative piece showing order turning into chaos and back."><EntropyLoader /></LoaderCard>
+        <LoaderCard title="17 // The UI Devourer" description="Component Interaction: 'Shreds' the card content as it scans."><DevourerLoader /></LoaderCard>
+        <LoaderCard title="18 // Dimensional Breach" description="45s Narrative: A cube that evolves, shatters, and re-materializes."><BreachLoader /></LoaderCard>
+        <LoaderCard title="19 // Singularity Pulse" description="Mobile Interaction: TAP AND HOLD to suck the entire page into a void."><PulseLoader /></LoaderCard>
+        <LoaderCard title="20 // Schrödinger's Box" description="Anim + Interact: Spins continuously, collapses into a glowing orb on touch."><SchrodingerLoader /></LoaderCard>
+        <LoaderCard title="21 // Quantum Entanglement" description="Anim + Interact: Orbiting particles that snap together and merge on touch."><EntanglementLoader /></LoaderCard>
+        <LoaderCard title="22 // The Interrogator" description="Page Interaction: A sweeping radar beam that inverts the card's text."><InterrogatorLoader /></LoaderCard>
+        <LoaderCard title="23 // Gravity Lens" description="Page Interaction: A roaming orb that blurs and distorts the UI underneath."><LensLoader /></LoaderCard>
+        <LoaderCard title="24 // Alchemical Transmutation" description="Story: 20s cycle turning a rough dark stone into a glowing golden ring."><AlchemyLoader /></LoaderCard>
+        <LoaderCard title="25 // Cellular Mitosis" description="Story: A single cell elongates, splits into two, orbits, and merges back."><MitosisLoader /></LoaderCard>
       </main>
       <footer className="p-8 border-t border-white/10 text-center text-xs text-white/20 uppercase tracking-widest">
         <p>bool ceo_bypass_triggered = true; // Enjoy the chaos.</p>
@@ -142,95 +149,158 @@ function NeuralLoader() {
   );
 }
 
-function GridSmasher() {
+function SingularityLoader() {
   return (
-    <div className="grid-smasher">
-      <div></div><div></div><div></div>
-      <div></div><div></div><div></div>
-      <div></div><div></div><div></div>
+    <div className="singularity-container">
+      <div className="singularity-core"></div>
+      {Array.from({ length: 12 }).map((_, i) => (
+        <div key={i} className="singularity-ring" style={{ width: `${(i + 1) * 20}px`, height: `${(i + 1) * 20}px`, animationDelay: `${i * -2.5}s` }}></div>
+      ))}
     </div>
   );
 }
 
-function MoireIllusion() {
+function VirusLoader() {
   return (
-    <div className="moire-wrapper">
-      <input type="checkbox" id="moire-toggle" className="moire-toggle hidden" />
-      <label htmlFor="moire-toggle" className="absolute inset-0 z-10 cursor-pointer"></label>
-      <div className="moire-bg"></div>
-      <div className="moire-fg"></div>
-      <div className="absolute bottom-2 left-2 text-[10px] text-red-600 font-bold pointer-events-none mix-blend-difference z-20">TAP TO DISTORT</div>
+    <div className="virus-container">
+      <div className="flex flex-col gap-2 p-4 opacity-20">
+        <div className="h-4 w-full bg-white/20 rounded"></div>
+        <div className="h-4 w-3/4 bg-white/20 rounded"></div>
+        <div className="h-4 w-1/2 bg-white/20 rounded"></div>
+      </div>
+      <div className="virus-scanner"></div>
+      <div className="virus-distortion"></div>
+      <div className="virus-text">CRITICAL_ERROR: MEMORY_LEAK_DETECTED // OVERRIDE_ACTIVE</div>
     </div>
   );
 }
 
-function SystemHijack() {
+function ReactorLoader() {
   return (
-    <div className="flex items-center justify-center w-full h-full relative">
-      <input type="checkbox" id="hijack-toggle" className="hijack-toggle hidden" />
-      <label htmlFor="hijack-toggle" className="hijack-btn">HIJACK</label>
-      <div className="hijack-overlay">
-        <div className="hijack-text">SYSTEM OVERRIDE</div>
+    <div className="reactor-container">
+      <div className="reactor-core"></div>
+      <div className="reactor-part p1"></div>
+      <div className="reactor-part p2"></div>
+      <div className="reactor-part p3"></div>
+      <div className="reactor-part p4"></div>
+    </div>
+  );
+}
+
+function GhostLoader() {
+  return (
+    <div className="ghost-container">
+      <div className="ghost-layer"></div>
+      <div className="ghost-figure"></div>
+      <div className="ghost-glitch"></div>
+    </div>
+  );
+}
+
+function RecursionLoader() {
+  return (
+    <div className="recursion-container">
+      <div className="recursion-box">
+        <div className="recursion-box" style={{ transform: 'scale(0.5)' }}>
+          <div className="recursion-box" style={{ transform: 'scale(0.5)' }}></div>
+        </div>
       </div>
     </div>
   );
 }
 
-function TypoCollapse() {
+function MagneticLoader() {
   return (
-    <div className="typo-container">
-      <div className="typo-text"></div>
+    <div className="magnetic-grid">
+      {Array.from({ length: 64 }).map((_, i) => {
+        const x = (i % 8) - 3.5;
+        const y = Math.floor(i / 8) - 3.5;
+        const angle = Math.atan2(y, x) * (180 / Math.PI);
+        return <div key={i} className="magnetic-needle" style={{ '--rot': `${angle + 90}deg` } as React.CSSProperties}></div>;
+      })}
     </div>
   );
 }
 
-function ZIndexSlicer() {
+function EntropyLoader() {
   return (
-    <div className="slicer-container">
-      <div className="slice"></div>
-      <div className="slice"></div>
-      <div className="slice"></div>
-      <div className="slice"></div>
+    <div className="entropy-container">
+      <div className="entropy-hand"></div>
     </div>
   );
 }
 
-function TruthLens() {
+function DevourerLoader() {
   return (
-    <div className="flex items-center justify-center w-full h-full">
-      <input type="checkbox" id="lens-toggle" className="lens-toggle hidden" />
-      <label htmlFor="lens-toggle" className="lens-btn">SCAN</label>
-      <div className="lens-beam"></div>
+    <div className="devourer-container">
+      <div className="devourer-scanner"></div>
+      <div className="devourer-mask"></div>
     </div>
   );
 }
 
-function Alchemy() {
+function BreachLoader() {
   return (
-    <div className="alchemy-wrapper">
-      <div className="alc-circle"></div>
-      <div className="alc-triangle"></div>
-      <div className="alc-core"></div>
+    <div className="breach-container">
+      <div className="breach-object"></div>
     </div>
   );
 }
 
-function BlackHole() {
+function PulseLoader() {
   return (
-    <div className="flex items-center justify-center w-full h-full">
-      <input type="checkbox" id="bh-toggle" className="bh-toggle hidden" />
-      <label htmlFor="bh-toggle" className="bh-label">VOID</label>
-      <div className="bh-event-horizon"></div>
-      <div className="bh-singularity"></div>
+    <div className="pulse-container">
+      <div className="pulse-core"></div>
     </div>
   );
 }
 
-function DivEvolution() {
+function SchrodingerLoader() {
   return (
-    <div className="flex items-center justify-center w-full h-full">
-      <div className="evo-div"></div>
+    <div className="schrodinger-container">
+      <div className="schrodinger-box"></div>
     </div>
   );
 }
 
+function EntanglementLoader() {
+  return (
+    <div className="entanglement-container">
+      <div className="particle particle-a"></div>
+      <div className="particle particle-b"></div>
+    </div>
+  );
+}
+
+function InterrogatorLoader() {
+  return (
+    <div className="interrogator-container">
+      <div className="interrogator-beam"></div>
+    </div>
+  );
+}
+
+function LensLoader() {
+  return (
+    <div className="lens-container">
+      <div className="lens-orb"></div>
+    </div>
+  );
+}
+
+function AlchemyLoader() {
+  return (
+    <div className="alchemy-container">
+      <div className="alchemy-stone"></div>
+    </div>
+  );
+}
+
+function MitosisLoader() {
+  return (
+    <div className="mitosis-container">
+      <div className="mitosis-cell"></div>
+      <div className="mitosis-cell b"></div>
+    </div>
+  );
+}

@@ -80,113 +80,150 @@
 @keyframes neural-shift { 0% { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); } 20% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%); } 40% { clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%, 50% 20%); } 60% { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%, 25% 25%); } 80% { clip-path: polygon(0% 20%, 100% 20%, 80% 100%, 20% 100%, 50% 80%); } 100% { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); } }
 @keyframes neural-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
-/* 10 The Grid Smasher (Layout Animation) */
-.grid-smasher { display: grid; width: 100%; height: 100%; animation: smash 0.5s infinite steps(2, end); gap: 2px; background: #dc2626; padding: 2px; }
-.grid-smasher div { background: #000; }
-@keyframes smash {
-  0% { grid-template-columns: 1fr 9fr 1fr; grid-template-rows: 1fr 9fr 1fr; }
-  25% { grid-template-columns: 9fr 1fr 1fr; grid-template-rows: 1fr 1fr 9fr; }
-  50% { grid-template-columns: 1fr 1fr 9fr; grid-template-rows: 9fr 1fr 1fr; }
-  75% { grid-template-columns: 5fr 5fr 1fr; grid-template-rows: 1fr 5fr 5fr; }
-  100% { grid-template-columns: 1fr 9fr 1fr; grid-template-rows: 1fr 9fr 1fr; }
+/* 10 Singularity (Story/Transformation) */
+.singularity-container { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #000; overflow: hidden; position: relative; }
+.singularity-core { width: 4px; height: 4px; background: #fff; border-radius: 50%; box-shadow: 0 0 10px #fff; animation: singularity-lifecycle 30s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+.singularity-ring { position: absolute; border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; animation: singularity-expansion 30s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+@keyframes singularity-lifecycle {
+  0% { transform: scale(0); opacity: 0; box-shadow: 0 0 0 #fff; }
+  5% { transform: scale(1); opacity: 1; box-shadow: 0 0 20px #fff; }
+  15% { transform: scale(100); opacity: 0.8; background: #fff; box-shadow: 0 0 100px 50px #fff, 0 0 200px 100px #3b82f6; }
+  30% { transform: scale(50); opacity: 0.5; background: #dc2626; box-shadow: 0 0 150px 70px #dc2626; }
+  60% { transform: scale(200); opacity: 0.2; background: #000; box-shadow: inset 0 0 100px #fff, 0 0 50px rgba(255,255,255,0.1); }
+  90% { transform: scale(0.1); opacity: 0; }
+  100% { transform: scale(0); opacity: 0; }
+}
+@keyframes singularity-expansion {
+  0% { transform: scale(0); opacity: 0; }
+  10% { transform: scale(1); opacity: 0.5; }
+  100% { transform: scale(10); opacity: 0; }
 }
 
-/* 11 Moiré Illusion (Mobile Interactive - Checkbox Hack) */
-.moire-wrapper { position: relative; width: 100%; height: 100%; overflow: hidden; cursor: pointer; }
-.moire-bg { position: absolute; inset: -100%; background: repeating-radial-gradient(circle at 50% 50%, #fff 0, #fff 4px, #000 4px, #000 8px); }
-.moire-fg { position: absolute; inset: -100%; background: repeating-radial-gradient(circle at 50% 50%, transparent 0, transparent 4px, #000 4px, #000 8px); animation: moire-spin 20s infinite linear; transform-origin: center; transition: transform 1s cubic-bezier(0.1, 2, 0.5, 1); }
-.moire-toggle:checked ~ .moire-fg { transform: scale(0.5) translateX(50px); animation-duration: 2s; }
-@keyframes moire-spin { 100% { transform: rotate(360deg); } }
-
-/* 12 System Hijack (Page Interaction - Checkbox Hack) */
-.hijack-btn { width: 60px; height: 60px; background: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 10px; cursor: pointer; animation: pulse-red 2s infinite; position: relative; z-index: 10000; }
-.hijack-overlay { position: fixed; inset: 0; background: #fff; mix-blend-mode: difference; z-index: 9999; clip-path: circle(0% at 50% 50%); transition: clip-path 0.8s cubic-bezier(0.8, 0, 0.2, 1); pointer-events: none; display: flex; align-items: center; justify-content: center; }
-.hijack-toggle:checked ~ .hijack-overlay { clip-path: circle(150% at 50% 50%); pointer-events: all; }
-.hijack-text { font-size: 10vw; font-weight: 900; color: #000; text-transform: uppercase; animation: glitch-text 0.1s infinite; }
-@keyframes pulse-red { 0%, 100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); } 50% { box-shadow: 0 0 0 20px rgba(220, 38, 38, 0); } }
-@keyframes glitch-text { 0% { transform: translate(2px, 2px); } 50% { transform: translate(-2px, -2px); } 100% { transform: translate(2px, -2px); } }
-
-/* 13 Typographic Collapse (Story) */
-.typo-container { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; overflow: hidden; }
-.typo-text { font-family: monospace; font-size: 2rem; font-weight: bold; color: #fff; animation: typo-story 8s infinite cubic-bezier(0.7, 0, 0.3, 1); white-space: nowrap; }
-.typo-text::before { content: "ORDER"; animation: typo-word 8s infinite step-end; }
-@keyframes typo-story {
-  0% { letter-spacing: 0px; filter: blur(0); transform: scale(1); color: #fff; }
-  30% { letter-spacing: 50px; filter: blur(5px); transform: scale(1.5); color: #dc2626; }
-  40% { letter-spacing: -20px; filter: blur(10px); transform: scale(0.5) rotate(180deg); color: #555; }
-  60% { letter-spacing: 100px; filter: blur(0); transform: scale(3) rotate(360deg); color: #fff; opacity: 0; }
-  100% { letter-spacing: 0px; filter: blur(0); transform: scale(1) rotate(360deg); color: #fff; opacity: 1; }
+/* 11 System Virus (Page Interaction) */
+.virus-container { width: 100%; height: 100%; position: relative; overflow: hidden; }
+.virus-scanner { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: #dc2626; box-shadow: 0 0 15px #dc2626; animation: virus-scan 4s infinite linear; z-index: 5; }
+.virus-distortion { position: absolute; inset: 0; backdrop-filter: invert(1) hue-rotate(90deg) blur(2px); clip-path: inset(0 0 100% 0); animation: virus-distort 8s infinite steps(10); pointer-events: none; }
+@keyframes virus-scan { 0% { top: -10%; } 100% { top: 110%; } }
+@keyframes virus-distort {
+  0%, 100% { clip-path: inset(0 0 100% 0); }
+  10%, 30% { clip-path: inset(20% 0 70% 0); }
+  40%, 60% { clip-path: inset(50% 0 20% 0); }
+  70%, 90% { clip-path: inset(10% 0 10% 0); }
 }
-@keyframes typo-word {
-  0% { content: "ORDER"; }
-  30% { content: "CHAOS"; }
-  60% { content: "VOID"; }
-  100% { content: "ORDER"; }
-}
+.virus-text { position: absolute; bottom: 10px; left: 10px; font-size: 8px; color: #dc2626; font-family: monospace; opacity: 0.8; animation: virus-flicker 0.1s infinite; }
+@keyframes virus-flicker { 0%, 100% { opacity: 0.8; } 50% { opacity: 0.2; } }
 
-/* 15 The Truth Lens (Interactive + Page Interaction) */
-.lens-btn { width: 60px; height: 60px; border-radius: 50%; background: #000; border: 2px solid #dc2626; color: #dc2626; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; transition: 0.3s; position: relative; z-index: 10000; }
-.lens-btn:hover { background: #dc2626; color: #000; box-shadow: 0 0 20px #dc2626; }
-.lens-beam { position: fixed; top: 0; left: -100vw; width: 100vw; height: 100vh; background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.1), rgba(220, 38, 38, 0.5), rgba(220, 38, 38, 0.1), transparent); z-index: 9999; mix-blend-mode: color-dodge; pointer-events: none; transition: left 0s; backdrop-filter: hue-rotate(90deg) contrast(2); }
-.lens-toggle:checked ~ .lens-beam { animation: scan-page 3s ease-in-out forwards; }
-@keyframes scan-page { 0% { left: -100vw; } 100% { left: 100vw; } }
+/* 12 Kinetic Reactor (Interactive - UPGRADED) */
+.reactor-container { width: 200px; height: 200px; position: relative; perspective: 1000px; transform-style: preserve-3d; }
+.reactor-core { width: 40px; height: 40px; background: #fff; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 5px; box-shadow: 0 0 20px #fff; transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1); animation: reactor-idle 4s infinite ease-in-out; }
+.reactor-part { position: absolute; width: 20px; height: 20px; border: 1px solid #fff; transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1); opacity: 0.3; }
+.reactor-container:hover .reactor-core { transform: translate(-50%, -50%) rotateY(720deg) scale(0.2); background: #dc2626; box-shadow: 0 0 100px #dc2626; opacity: 0; }
+.reactor-container:hover .reactor-part { opacity: 1; border-color: #dc2626; box-shadow: 0 0 15px #dc2626; }
+.p1 { transform: translate(-80px, -80px) rotate(45deg); } .reactor-container:hover .p1 { transform: translate(0, 0) rotate(405deg); }
+.p2 { transform: translate(80px, -80px) rotate(-45deg); } .reactor-container:hover .p2 { transform: translate(0, 0) rotate(-405deg); }
+.p3 { transform: translate(-80px, 80px) rotate(-135deg); } .reactor-container:hover .p3 { transform: translate(0, 0) rotate(-495deg); }
+.p4 { transform: translate(80px, 80px) rotate(135deg); } .reactor-container:hover .p4 { transform: translate(0, 0) rotate(495deg); }
 
-/* 16 Alchemical Transmutation (Story) */
-.alchemy-wrapper { width: 150px; height: 150px; position: relative; }
-.alc-circle { position: absolute; inset: 0; border: 2px solid transparent; border-radius: 50%; animation: alc-draw-circle 12s infinite linear; }
-.alc-triangle { position: absolute; inset: 15%; border: 2px solid transparent; clip-path: polygon(50% 0%, 0% 100%, 100% 100%); animation: alc-draw-tri 12s infinite linear; }
-.alc-core { position: absolute; inset: 45%; background: #fff; border-radius: 50%; animation: alc-core-anim 12s infinite ease-in-out; }
-@keyframes alc-draw-circle {
-  0%, 5% { border-color: transparent; transform: rotate(0deg); }
-  10%, 40% { border-color: #fff; border-top-color: #dc2626; transform: rotate(180deg); }
-  50%, 80% { border-color: #dc2626; transform: rotate(720deg) scale(0.5); border-width: 10px; }
-  90%, 100% { border-color: transparent; transform: rotate(1080deg) scale(0); }
-}
-@keyframes alc-draw-tri {
-  0%, 10% { border-color: transparent; transform: rotate(0deg); }
-  15%, 40% { border-color: #fff; transform: rotate(-180deg); }
-  50%, 80% { border-color: #fff; transform: rotate(-720deg) scale(1.5); mix-blend-mode: difference; }
-  90%, 100% { border-color: transparent; transform: rotate(-1080deg) scale(0); }
-}
-@keyframes alc-core-anim {
-  0%, 30% { opacity: 0; box-shadow: 0 0 0 #fff; transform: scale(1); }
-  40%, 50% { opacity: 1; box-shadow: 0 0 20px #dc2626; background: #dc2626; transform: scale(2); }
-  80% { opacity: 1; box-shadow: 0 0 100px 50px #fff; background: #fff; transform: scale(0.1); }
-  90%, 100% { opacity: 0; transform: scale(0); }
-}
+/* 13 Data Ghost (Page Interaction) */
+.ghost-container { width: 100%; height: 100%; position: relative; background: #000; overflow: hidden; }
+.ghost-layer { position: absolute; inset: -50%; background: repeating-linear-gradient(0deg, transparent 0, transparent 2px, rgba(255,255,255,0.05) 2px, rgba(255,255,255,0.05) 4px); animation: ghost-float 10s infinite linear; }
+.ghost-figure { position: absolute; top: 50%; left: 50%; width: 120px; height: 120px; background: #fff; transform: translate(-50%, -50%); filter: blur(20px); mix-blend-mode: difference; animation: ghost-morph 5s infinite alternate ease-in-out; }
+.ghost-glitch { position: absolute; inset: 0; backdrop-filter: invert(1) contrast(2) brightness(1.5); clip-path: inset(50% 0 50% 0); animation: ghost-glitch-anim 0.2s infinite; }
+@keyframes ghost-float { 0% { transform: translateY(0); } 100% { transform: translateY(4px); } }
+@keyframes ghost-morph { 0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: translate(-50%, -50%) scale(1); } 100% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; transform: translate(-50%, -50%) scale(1.5) rotate(90deg); } }
+@keyframes ghost-glitch-anim { 0% { clip-path: inset(10% 0 80% 0); } 50% { clip-path: inset(80% 0 10% 0); } 100% { clip-path: inset(40% 0 40% 0); } }
 
-/* 17 The Black Hole (Interactive + Page Interaction) */
-.bh-toggle { display: none; }
-.bh-label { cursor: pointer; width: 60px; height: 60px; background: #000; border-radius: 50%; box-shadow: 0 0 10px #fff; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px; font-weight: bold; transition: 0.3s; position: relative; z-index: 10000; }
-.bh-label:hover { box-shadow: 0 0 30px #dc2626; color: #dc2626; }
-.bh-event-horizon { position: fixed; inset: 0; backdrop-filter: blur(20px) invert(1) grayscale(1); z-index: 9998; pointer-events: none; clip-path: circle(0% at 50% 50%); transition: clip-path 2s cubic-bezier(0.8, 0, 0.2, 1); }
-.bh-singularity { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(0); width: 150vmax; height: 150vmax; background: conic-gradient(from 0deg, #000, transparent, #000, transparent, #000); z-index: 9999; pointer-events: none; transition: transform 2s cubic-bezier(0.8, 0, 0.2, 1); opacity: 0.5; mix-blend-mode: overlay; }
-.bh-toggle:checked ~ .bh-event-horizon { clip-path: circle(150% at 50% 50%); }
-.bh-toggle:checked ~ .bh-singularity { transform: translate(-50%, -50%) scale(1); animation: bh-spin 2s infinite linear; }
-@keyframes bh-spin { 100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); } }
+/* 14 Infinite Recursion (Story/Transformation) */
+.recursion-container { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #0a0a0a; overflow: hidden; }
+.recursion-box { width: 200px; height: 200px; border: 2px solid #fff; position: relative; animation: recursion-zoom 4s infinite linear; }
+.recursion-box::before { content: ''; position: absolute; inset: 25%; border: 2px solid #dc2626; animation: recursion-zoom 4s infinite linear reverse; }
+@keyframes recursion-zoom { 0% { transform: scale(1) rotate(0deg); opacity: 1; } 100% { transform: scale(4) rotate(90deg); opacity: 0; } }
 
-/* 18 Evolution of a Div (Story) */
-.evo-div { width: 100px; height: 100px; animation: evolution 20s infinite; display: flex; align-items: center; justify-content: center; font-family: sans-serif; font-size: 16px; font-weight: bold; }
-.evo-div::after { content: '1995'; animation: evo-text 20s infinite; }
-@keyframes evolution {
-  /* 1995 */
-  0%, 15% { background: #c0c0c0; border: 4px solid; border-color: #fff #808080 #808080 #fff; border-radius: 0; box-shadow: none; backdrop-filter: none; transform: skew(0) scale(1); clip-path: none; color: #000; text-shadow: none; mix-blend-mode: normal; }
-  /* 2005 */
-  20%, 35% { background: linear-gradient(to bottom, #7abcff 0%, #60abf8 44%, #4096ee 100%); border: 1px solid #2779aa; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.5); backdrop-filter: none; transform: skew(0) scale(1.1); clip-path: none; color: #fff; text-shadow: 0 -1px 0 rgba(0,0,0,0.4); mix-blend-mode: normal; }
-  /* 2015 */
-  40%, 55% { background: #e74c3c; border: none; border-radius: 0; box-shadow: none; backdrop-filter: none; transform: skew(0) scale(1); clip-path: none; color: #fff; text-shadow: none; mix-blend-mode: normal; }
-  /* 2025 */
-  60%, 75% { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(10px); transform: skew(0) scale(1.2); clip-path: none; color: #fff; text-shadow: none; mix-blend-mode: normal; }
-  /* 2035 */
-  80%, 95% { background: #000; border: none; border-radius: 0; box-shadow: 15px 15px 0 #dc2626, -15px -15px 0 #3b82f6; backdrop-filter: none; transform: skew(-15deg) scale(0.9); clip-path: polygon(0 10%, 100% 0, 90% 100%, 10% 90%); color: #fff; text-shadow: 2px 0 #dc2626, -2px 0 #3b82f6; mix-blend-mode: difference; }
-  100% { background: #c0c0c0; border: 4px solid; border-color: #fff #808080 #808080 #fff; border-radius: 0; box-shadow: none; backdrop-filter: none; transform: skew(0) scale(1); clip-path: none; color: #000; text-shadow: none; mix-blend-mode: normal; }
-}
-@keyframes evo-text {
-  0%, 15% { content: '1995'; }
-  20%, 35% { content: '2005'; }
-  40%, 55% { content: '2015'; }
-  60%, 75% { content: '2025'; }
-  80%, 95% { content: '2035'; }
-  100% { content: '1995'; }
+/* 15 Magnetic Field (Interactive) */
+.magnetic-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 10px; width: 180px; height: 180px; }
+.magnetic-needle { width: 2px; height: 15px; background: #555; margin: auto; transition: transform 0.3s ease-out, background 0.3s; }
+.magnetic-grid:hover .magnetic-needle { background: #dc2626; transform: rotate(var(--rot, 45deg)); }
+
+/* 17 The UI Devourer (Component Interaction) */
+.devourer-container { position: absolute; inset: -50px; pointer-events: none; z-index: 10; }
+.devourer-scanner { position: absolute; top: 0; left: -10%; width: 20%; height: 100%; background: linear-gradient(90deg, transparent, #dc2626, transparent); animation: devourer-scan 8s infinite ease-in-out; filter: blur(10px); }
+/* This targets the parent card's content via a page-wide mask effect */
+.devourer-mask { position: fixed; inset: 0; backdrop-filter: brightness(2) contrast(3) grayscale(1); clip-path: inset(0 80% 0 0); animation: devourer-mask-move 8s infinite ease-in-out; pointer-events: none; }
+@keyframes devourer-scan { 0%, 100% { left: -10%; } 50% { left: 110%; } }
+@keyframes devourer-mask-move { 0%, 100% { clip-path: inset(0 100% 0 0); } 50% { clip-path: inset(0 0 0 0); } }
+
+/* 18 Dimensional Breach (Story/Transformation) */
+.breach-container { width: 100%; height: 100%; perspective: 1000px; display: flex; justify-content: center; align-items: center; }
+.breach-object { width: 80px; height: 80px; border: 2px solid #fff; animation: breach-story 45s infinite linear; transform-style: preserve-3d; }
+@keyframes breach-story {
+  0% { transform: rotateX(0) rotateY(0) scale(1); border-radius: 0; border-style: solid; opacity: 1; }
+  10% { transform: rotateX(180deg) rotateY(180deg) scale(1.5); border-radius: 50%; border-style: dashed; }
+  25% { transform: rotateX(360deg) rotateY(720deg) scale(0.5); filter: blur(10px); opacity: 0.5; }
+  40% { transform: rotateX(0) rotateY(0) scale(2); border-radius: 20% 80% 20% 80%; background: #fff; mix-blend-mode: difference; }
+  60% { transform: rotateX(720deg) rotateY(-360deg) scale(0.2); clip-path: polygon(50% 0%, 0% 100%, 100% 100%); }
+  80% { transform: rotateX(0) rotateY(0) scale(3); opacity: 0; filter: contrast(10); }
+  100% { transform: rotateX(0) rotateY(0) scale(1); border-radius: 0; opacity: 1; }
 }
 
+/* 20 Schrödinger's Box (Animation + Interaction) */
+.schrodinger-container { perspective: 800px; width: 100px; height: 100px; transform-style: preserve-3d; animation: schrodinger-spin 10s infinite linear; cursor: pointer; }
+.schrodinger-box { position: absolute; inset: 0; border: 2px solid #fff; transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); transform-style: preserve-3d; }
+.schrodinger-box::before, .schrodinger-box::after { content: ''; position: absolute; inset: -15px; border: 1px dashed rgba(255,255,255,0.4); transition: all 0.5s; transform: translateZ(-50px); }
+.schrodinger-box::after { inset: 15px; border: 1px solid #dc2626; transform: translateZ(50px); }
+.schrodinger-container:hover, .schrodinger-container:active { animation-play-state: paused; }
+.schrodinger-container:hover .schrodinger-box, .schrodinger-container:active .schrodinger-box { transform: rotateX(90deg) rotateY(0deg) scale(0.1); background: #fff; box-shadow: 0 0 150px 50px #fff; border-radius: 50%; }
+.schrodinger-container:hover .schrodinger-box::before, .schrodinger-container:active .schrodinger-box::before { transform: scale(25) translateZ(0); border-color: #dc2626; border-radius: 50%; border-style: solid; }
+@keyframes schrodinger-spin { 100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(180deg); } }
+
+/* 21 Quantum Entanglement (Animation + Interaction) */
+.entanglement-container { position: relative; width: 150px; height: 150px; cursor: pointer; }
+.particle { position: absolute; width: 20px; height: 20px; border-radius: 50%; background: #fff; top: 50%; left: 50%; margin: -10px 0 0 -10px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 0 10px #fff; }
+.particle-a { animation: orbit-a 3s infinite linear; }
+.particle-b { animation: orbit-b 3s infinite linear; background: #dc2626; box-shadow: 0 0 10px #dc2626; }
+.entanglement-container:hover .particle, .entanglement-container:active .particle { animation-play-state: paused; transform: translate(0,0) scale(3); mix-blend-mode: screen; box-shadow: 0 0 60px #fff; }
+@keyframes orbit-a { 0% { transform: rotate(0deg) translateX(50px) rotate(0deg); } 100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); } }
+@keyframes orbit-b { 0% { transform: rotate(180deg) translateX(50px) rotate(-180deg); } 100% { transform: rotate(540deg) translateX(50px) rotate(-540deg); } }
+
+/* 22 The Interrogator (Page/Element Interaction) */
+.interrogator-container { position: absolute; inset: 0; pointer-events: none; z-index: 20; mix-blend-mode: difference; overflow: hidden; border-radius: 0.5rem; }
+.interrogator-beam { position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, #fff 5deg, transparent 10deg, transparent 180deg, #dc2626 185deg, transparent 190deg); animation: interrogator-sweep 4s infinite linear; transform-origin: center; }
+@keyframes interrogator-sweep { 100% { transform: rotate(360deg); } }
+
+/* 23 Gravity Lens (Page/Element Interaction) */
+.lens-container { position: absolute; inset: 0; pointer-events: none; z-index: 15; overflow: hidden; border-radius: 0.5rem; }
+.lens-orb { position: absolute; width: 120px; height: 120px; border-radius: 50%; backdrop-filter: blur(12px) contrast(2) hue-rotate(180deg) brightness(1.5); box-shadow: inset 0 0 30px rgba(255,255,255,0.5), 0 0 20px rgba(0,0,0,0.5); animation: lens-roam 8s infinite cubic-bezier(0.4, 0, 0.2, 1); }
+@keyframes lens-roam {
+  0%, 100% { transform: translate(-30px, -30px) scale(1); }
+  25% { transform: translate(250px, 80px) scale(1.5); }
+  50% { transform: translate(120px, 200px) scale(0.8); }
+  75% { transform: translate(-50px, 150px) scale(1.2); }
+}
+
+/* 24 Alchemical Transmutation (Story/Transformation) */
+.alchemy-container { width: 100px; height: 100px; display: flex; justify-content: center; align-items: center; }
+.alchemy-stone { width: 60px; height: 60px; background: #333; animation: alchemy-story 20s infinite; }
+@keyframes alchemy-story {
+  0% { transform: rotate(0deg) scale(1); border-radius: 0%; background: #222; box-shadow: 0 0 0 #000; filter: grayscale(1); }
+  20% { transform: rotate(180deg) scale(0.8); border-radius: 10% 30% 20% 40%; background: #444; }
+  40% { transform: rotate(360deg) scale(1.2); border-radius: 50%; background: #b8860b; box-shadow: 0 0 30px #b8860b; filter: grayscale(0); }
+  60% { transform: rotate(720deg) scale(1.5); border-radius: 50%; background: #ffd700; box-shadow: 0 0 80px #ffd700, inset 0 0 30px #fff; }
+  80% { transform: rotate(900deg) scale(0.5); border-radius: 30% 70% 50% 10%; background: #dc2626; box-shadow: 0 0 20px #dc2626; }
+  100% { transform: rotate(1080deg) scale(1); border-radius: 0%; background: #222; box-shadow: 0 0 0 #000; filter: grayscale(1); }
+}
+
+/* 25 Cellular Mitosis (Story/Transformation) */
+.mitosis-container { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; filter: contrast(30); background: #0a0a0a; mix-blend-mode: lighten; border-radius: 0.5rem; }
+.mitosis-cell { position: absolute; width: 60px; height: 60px; background: #dc2626; border-radius: 50%; filter: blur(15px); animation: mitosis-a 12s infinite ease-in-out; }
+.mitosis-cell.b { animation: mitosis-b 12s infinite ease-in-out; background: #fff; }
+@keyframes mitosis-a {
+  0%, 100% { transform: translateX(0) scale(1.5); }
+  25% { transform: translateX(-60px) scale(1); }
+  50% { transform: translateX(-90px) scale(0.8); }
+  75% { transform: translateX(-30px) scale(1.2); }
+}
+@keyframes mitosis-b {
+  0%, 100% { transform: translateX(0) scale(1.5); }
+  25% { transform: translateX(60px) scale(1); }
+  50% { transform: translateX(90px) scale(0.8); }
+  75% { transform: translateX(30px) scale(1.2); }
+}
