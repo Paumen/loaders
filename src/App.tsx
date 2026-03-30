@@ -28,6 +28,15 @@ export default function App() {
         <LoaderCard title="07 // Quantum String" description="Massive box-shadow arrays manipulated via scale transforms."><QuantumLoader /></LoaderCard>
         <LoaderCard title="08 // Void Siphon" description="Grid-based staggered animation delays simulating a gravity well."><SiphonLoader /></LoaderCard>
         <LoaderCard title="09 // Neural Collapse" description="Aggressive clip-path interpolation with exclusion blending."><NeuralLoader /></LoaderCard>
+        <LoaderCard title="10 // The Grid Smasher" description="Layout Animation: Animates CSS Grid tracks instead of transforms."><GridSmasher /></LoaderCard>
+        <LoaderCard title="11 // Moiré Illusion" description="Mobile Interactive: TAP to toggle a massive repeating gradient optical illusion."><MoireIllusion /></LoaderCard>
+        <LoaderCard title="12 // System Hijack" description="Page Interaction: TAP to trigger a fixed-position, screen-swallowing difference mask."><SystemHijack /></LoaderCard>
+        <LoaderCard title="13 // Typographic Collapse" description="Story: A narrative told purely through letter-spacing, content, and blur filters."><TypoCollapse /></LoaderCard>
+        <LoaderCard title="14 // Z-Index Slicer" description="Animation: Uses clip-path to slice a block, animating pieces through different z-indexes."><ZIndexSlicer /></LoaderCard>
+        <LoaderCard title="15 // The Truth Lens" description="Page Interaction: TAP to scan the page with a color-dodge beam."><TruthLens /></LoaderCard>
+        <LoaderCard title="16 // Alchemical Transmutation" description="Story: A geometric ritual that draws, ignites, and collapses."><Alchemy /></LoaderCard>
+        <LoaderCard title="17 // The Black Hole" description="Page Interaction: TAP to open a massive gravity well that distorts the page."><BlackHole /></LoaderCard>
+        <LoaderCard title="18 // Evolution of a Div" description="Story: A single div transforming through the history of web design."><DivEvolution /></LoaderCard>
       </main>
       <footer className="p-8 border-t border-white/10 text-center text-xs text-white/20 uppercase tracking-widest">
         <p>bool ceo_bypass_triggered = true; // Enjoy the chaos.</p>
@@ -132,3 +141,96 @@ function NeuralLoader() {
     </div>
   );
 }
+
+function GridSmasher() {
+  return (
+    <div className="grid-smasher">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+  );
+}
+
+function MoireIllusion() {
+  return (
+    <div className="moire-wrapper">
+      <input type="checkbox" id="moire-toggle" className="moire-toggle hidden" />
+      <label htmlFor="moire-toggle" className="absolute inset-0 z-10 cursor-pointer"></label>
+      <div className="moire-bg"></div>
+      <div className="moire-fg"></div>
+      <div className="absolute bottom-2 left-2 text-[10px] text-red-600 font-bold pointer-events-none mix-blend-difference z-20">TAP TO DISTORT</div>
+    </div>
+  );
+}
+
+function SystemHijack() {
+  return (
+    <div className="flex items-center justify-center w-full h-full relative">
+      <input type="checkbox" id="hijack-toggle" className="hijack-toggle hidden" />
+      <label htmlFor="hijack-toggle" className="hijack-btn">HIJACK</label>
+      <div className="hijack-overlay">
+        <div className="hijack-text">SYSTEM OVERRIDE</div>
+      </div>
+    </div>
+  );
+}
+
+function TypoCollapse() {
+  return (
+    <div className="typo-container">
+      <div className="typo-text"></div>
+    </div>
+  );
+}
+
+function ZIndexSlicer() {
+  return (
+    <div className="slicer-container">
+      <div className="slice"></div>
+      <div className="slice"></div>
+      <div className="slice"></div>
+      <div className="slice"></div>
+    </div>
+  );
+}
+
+function TruthLens() {
+  return (
+    <div className="flex items-center justify-center w-full h-full">
+      <input type="checkbox" id="lens-toggle" className="lens-toggle hidden" />
+      <label htmlFor="lens-toggle" className="lens-btn">SCAN</label>
+      <div className="lens-beam"></div>
+    </div>
+  );
+}
+
+function Alchemy() {
+  return (
+    <div className="alchemy-wrapper">
+      <div className="alc-circle"></div>
+      <div className="alc-triangle"></div>
+      <div className="alc-core"></div>
+    </div>
+  );
+}
+
+function BlackHole() {
+  return (
+    <div className="flex items-center justify-center w-full h-full">
+      <input type="checkbox" id="bh-toggle" className="bh-toggle hidden" />
+      <label htmlFor="bh-toggle" className="bh-label">VOID</label>
+      <div className="bh-event-horizon"></div>
+      <div className="bh-singularity"></div>
+    </div>
+  );
+}
+
+function DivEvolution() {
+  return (
+    <div className="flex items-center justify-center w-full h-full">
+      <div className="evo-div"></div>
+    </div>
+  );
+}
+
