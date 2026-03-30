@@ -35,15 +35,6 @@ export default function App() {
         <LoaderCard title="14 // Infinite Recursion" description="Fractal-like narrative zoom showing infinite rebirth."><RecursionLoader /></LoaderCard>
         <LoaderCard title="15 // Magnetic Field" description="Interactive grid where elements 'point' toward the cursor."><MagneticLoader /></LoaderCard>
         <LoaderCard title="16 // Entropy Clock" description="Narrative piece showing order turning into chaos and back."><EntropyLoader /></LoaderCard>
-        <LoaderCard title="17 // The UI Devourer" description="Component Interaction: 'Shreds' the card content as it scans."><DevourerLoader /></LoaderCard>
-        <LoaderCard title="18 // Dimensional Breach" description="45s Narrative: A cube that evolves, shatters, and re-materializes."><BreachLoader /></LoaderCard>
-        <LoaderCard title="19 // Singularity Pulse" description="Mobile Interaction: TAP AND HOLD to suck the entire page into a void."><PulseLoader /></LoaderCard>
-        <LoaderCard title="20 // Schrödinger's Box" description="Anim + Interact: Spins continuously, collapses into a glowing orb on touch."><SchrodingerLoader /></LoaderCard>
-        <LoaderCard title="21 // Quantum Entanglement" description="Anim + Interact: Orbiting particles that snap together and merge on touch."><EntanglementLoader /></LoaderCard>
-        <LoaderCard title="22 // The Interrogator" description="Page Interaction: A sweeping radar beam that inverts the card's text."><InterrogatorLoader /></LoaderCard>
-        <LoaderCard title="23 // Gravity Lens" description="Page Interaction: A roaming orb that blurs and distorts the UI underneath."><LensLoader /></LoaderCard>
-        <LoaderCard title="24 // Alchemical Transmutation" description="Story: 20s cycle turning a rough dark stone into a glowing golden ring."><AlchemyLoader /></LoaderCard>
-        <LoaderCard title="25 // Cellular Mitosis" description="Story: A single cell elongates, splits into two, orbits, and merges back."><MitosisLoader /></LoaderCard>
       </main>
       <footer className="p-8 border-t border-white/10 text-center text-xs text-white/20 uppercase tracking-widest">
         <p>bool ceo_bypass_triggered = true; // Enjoy the chaos.</p>
@@ -226,81 +217,6 @@ function EntropyLoader() {
   return (
     <div className="entropy-container">
       <div className="entropy-hand"></div>
-    </div>
-  );
-}
-
-function DevourerLoader() {
-  return (
-    <div className="devourer-container">
-      <div className="devourer-scanner"></div>
-      <div className="devourer-mask"></div>
-    </div>
-  );
-}
-
-function BreachLoader() {
-  return (
-    <div className="breach-container">
-      <div className="breach-object"></div>
-    </div>
-  );
-}
-
-function PulseLoader() {
-  return (
-    <div className="pulse-container">
-      <div className="pulse-core"></div>
-    </div>
-  );
-}
-
-function SchrodingerLoader() {
-  return (
-    <div className="schrodinger-container">
-      <div className="schrodinger-box"></div>
-    </div>
-  );
-}
-
-function EntanglementLoader() {
-  return (
-    <div className="entanglement-container">
-      <div className="particle particle-a"></div>
-      <div className="particle particle-b"></div>
-    </div>
-  );
-}
-
-function InterrogatorLoader() {
-  return (
-    <div className="interrogator-container">
-      <div className="interrogator-beam"></div>
-    </div>
-  );
-}
-
-function LensLoader() {
-  return (
-    <div className="lens-container">
-      <div className="lens-orb"></div>
-    </div>
-  );
-}
-
-function AlchemyLoader() {
-  return (
-    <div className="alchemy-container">
-      <div className="alchemy-stone"></div>
-    </div>
-  );
-}
-
-function MitosisLoader() {
-  return (
-    <div className="mitosis-container">
-      <div className="mitosis-cell"></div>
-      <div className="mitosis-cell b"></div>
     </div>
   );
 }
