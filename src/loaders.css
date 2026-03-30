@@ -1,0 +1,81 @@
+/* 01 Tesseract */
+.tesseract-container { perspective: 800px; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; }
+.tesseract { width: 80px; height: 80px; position: relative; transform-style: preserve-3d; animation: tesseract-spin 12s infinite linear; }
+.tesseract-cube { width: 100%; height: 100%; position: absolute; transform-style: preserve-3d; }
+.tesseract-cube.outer { animation: tesseract-pulse 3s infinite ease-in-out alternate; }
+.tesseract-cube.inner { animation: tesseract-inner-spin 8s infinite linear reverse; }
+.tesseract-face { position: absolute; width: 80px; height: 80px; border: 1px solid rgba(220, 38, 38, 0.8); background: rgba(220, 38, 38, 0.05); box-shadow: inset 0 0 15px rgba(220, 38, 38, 0.3); }
+.outer .tesseract-face { border-color: rgba(255, 255, 255, 0.5); background: rgba(255, 255, 255, 0.02); box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1); }
+.front  { transform: translateZ(40px); }
+.back   { transform: rotateY(180deg) translateZ(40px); }
+.right  { transform: rotateY(90deg) translateZ(40px); }
+.left   { transform: rotateY(-90deg) translateZ(40px); }
+.top    { transform: rotateX(90deg) translateZ(40px); }
+.bottom { transform: rotateX(-90deg) translateZ(40px); }
+@keyframes tesseract-spin { 0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); } 100% { transform: rotateX(360deg) rotateY(720deg) rotateZ(360deg); } }
+@keyframes tesseract-inner-spin { 0% { transform: scale3d(0.4, 0.4, 0.4) rotateX(0deg) rotateY(0deg); } 100% { transform: scale3d(0.4, 0.4, 0.4) rotateX(-360deg) rotateY(-360deg); } }
+@keyframes tesseract-pulse { 0% { transform: scale3d(1, 1, 1); } 100% { transform: scale3d(1.4, 1.4, 1.4); } }
+
+/* 02 Glitch */
+.glitch-loader { position: relative; font-size: 3.5rem; font-weight: 900; color: white; letter-spacing: 0.1em; text-transform: uppercase; transform: skewX(-10deg); }
+.glitch-loader::before, .glitch-loader::after { content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #0a0a0a; overflow: hidden; }
+.glitch-loader::before { left: 4px; text-shadow: -2px 0 #dc2626; animation: glitch-anim-1 2.5s infinite linear alternate-reverse; }
+.glitch-loader::after { left: -4px; text-shadow: -2px 0 #3b82f6; animation: glitch-anim-2 3s infinite linear alternate-reverse; }
+@keyframes glitch-anim-1 { 0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); } 20% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); } 40% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 1px); } 60% { clip-path: inset(70% 0 20% 0); transform: translate(-2px, 1px); } 80% { clip-path: inset(55% 0 35% 0); transform: translate(-1px, 2px); } 100% { clip-path: inset(45% 0 45% 0); transform: translate(-2px, 1px); } }
+@keyframes glitch-anim-2 { 0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); } 20% { clip-path: inset(70% 0 10% 0); transform: translate(2px, 2px); } 40% { clip-path: inset(50% 0 30% 0); transform: translate(1px, 1px); } 60% { clip-path: inset(85% 0 5% 0); transform: translate(2px, 1px); } 80% { clip-path: inset(25% 0 65% 0); transform: translate(-2px, -1px); } 100% { clip-path: inset(5% 0 80% 0); transform: translate(-1px, -1px); } }
+
+/* 03 Liquid */
+.liquid-container { width: 100%; height: 100%; background: #0a0a0a; filter: contrast(30); display: flex; justify-content: center; align-items: center; position: absolute; top: 0; left: 0; overflow: hidden; }
+.liquid-blob { position: absolute; background: #dc2626; border-radius: 50%; filter: blur(15px); mix-blend-mode: screen; }
+.blob-1 { width: 90px; height: 90px; animation: liquid-1 6s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate; }
+.blob-2 { width: 70px; height: 70px; background: #fff; animation: liquid-2 5s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate-reverse; }
+.blob-3 { width: 110px; height: 110px; animation: liquid-3 7s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate; }
+.blob-4 { width: 50px; height: 50px; background: #fff; animation: liquid-4 4s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate-reverse; }
+@keyframes liquid-1 { 0% { transform: translate(-40px, -40px) scale(1); } 100% { transform: translate(40px, 40px) scale(1.5); } }
+@keyframes liquid-2 { 0% { transform: translate(40px, -40px) scale(1.2); } 100% { transform: translate(-40px, 40px) scale(0.8); } }
+@keyframes liquid-3 { 0% { transform: translate(0, 0) scale(0.8); } 100% { transform: translate(0, 0) scale(1.3); } }
+@keyframes liquid-4 { 0% { transform: translate(-30px, 30px) scale(1); } 100% { transform: translate(30px, -30px) scale(1.6); } }
+
+/* 04 Mandala */
+.mandala-container { position: relative; width: 200px; height: 200px; transform-style: preserve-3d; perspective: 600px; }
+.mandala-ring { position: absolute; top: 50%; left: 50%; border-style: solid; border-radius: 50%; transform: translate(-50%, -50%) rotateX(70deg); animation: mandala-spin 6s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate; mix-blend-mode: screen; }
+@keyframes mandala-spin { 0% { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(0deg) translateZ(-40px); } 100% { transform: translate(-50%, -50%) rotateX(70deg) rotateZ(360deg) translateZ(40px); } }
+
+/* 05 Hyperspace */
+.hyperspace-container { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background: #0a0a0a; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+.hyperspace-container::before { content: ''; position: absolute; width: 200%; height: 200%; background: repeating-conic-gradient(from 0deg, #0a0a0a 0deg 5deg, #fff 5deg 8deg, #dc2626 8deg 10deg, #0a0a0a 10deg 20deg); animation: hyperspace-spin 8s infinite linear; mask-image: radial-gradient(circle, transparent 15%, black 70%); -webkit-mask-image: radial-gradient(circle, transparent 15%, black 70%); }
+.hyperspace-core { width: 12px; height: 12px; background: #fff; border-radius: 50%; box-shadow: 0 0 40px 15px #fff, 0 0 80px 30px #dc2626; animation: hyperspace-pulse 0.4s infinite alternate; z-index: 10; }
+@keyframes hyperspace-spin { 0% { transform: rotate(0deg) scale(0.8); } 50% { transform: rotate(180deg) scale(1.5); } 100% { transform: rotate(360deg) scale(0.8); } }
+@keyframes hyperspace-pulse { 0% { transform: scale(0.5); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 1; } }
+
+/* 06 Brutalist */
+.brutalist-container { width: 100%; height: 100%; background: #fff; color: #000; position: absolute; top: 0; left: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: center; transform: skewY(-15deg) scale(1.3); }
+.brutalist-track { display: flex; white-space: nowrap; font-size: 5rem; font-weight: 900; line-height: 0.85; text-transform: uppercase; mix-blend-mode: difference; }
+.track-1 { animation: brutalist-scroll-left 4s infinite linear; }
+.track-2 { animation: brutalist-scroll-right 3s infinite linear; color: #dc2626; }
+.track-3 { animation: brutalist-scroll-left 5s infinite linear; }
+.brutalist-track span { padding: 0 15px; }
+.brutalist-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) skewY(15deg); width: 120px; height: 120px; border: 15px solid #000; border-radius: 50%; mix-blend-mode: difference; animation: brutalist-pulse 0.8s infinite steps(2); }
+@keyframes brutalist-scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes brutalist-scroll-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+@keyframes brutalist-pulse { 0% { transform: translate(-50%, -50%) skewY(15deg) scale(1); } 100% { transform: translate(-50%, -50%) skewY(15deg) scale(1.8); } }
+
+/* 07 Quantum */
+.quantum-container { position: relative; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; filter: blur(0.5px) contrast(3); }
+.quantum-string { position: absolute; width: 2px; height: 2px; border-radius: 50%; animation: quantum-wave 2.5s infinite cubic-bezier(0.4, 0, 0.2, 1) alternate; }
+.quantum-string.delay { animation-delay: -1.25s; transform: rotate(90deg); }
+@keyframes quantum-wave { 0% { transform: scaleY(1) rotate(0deg); } 100% { transform: scaleY(80) rotate(180deg); } }
+
+/* 08 Siphon */
+.siphon-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; width: 160px; height: 160px; transform: rotate(45deg); }
+.siphon-cell { background: #fff; border-radius: 1px; animation: siphon-pulse 2.5s infinite cubic-bezier(0.6, -0.28, 0.735, 0.045); }
+@keyframes siphon-pulse { 0%, 100% { transform: scale(0.1) translateZ(0); opacity: 0.1; background: #dc2626; border-radius: 50%; } 50% { transform: scale(1.8) translateZ(50px); opacity: 1; background: #fff; border-radius: 0; } }
+
+/* 09 Neural */
+.neural-container { width: 180px; height: 180px; position: relative; animation: neural-spin 20s infinite linear; }
+.neural-poly { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); mix-blend-mode: exclusion; animation: neural-shift 4s infinite cubic-bezier(0.77, 0, 0.175, 1); }
+.poly-1 { background: #f00; animation-duration: 3s; }
+.poly-2 { background: #0f0; animation-duration: 5s; animation-direction: reverse; }
+.poly-3 { background: #00f; animation-duration: 7s; }
+@keyframes neural-shift { 0% { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); } 20% { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 50% 50%); } 40% { clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%, 50% 20%); } 60% { clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%, 25% 25%); } 80% { clip-path: polygon(0% 20%, 100% 20%, 80% 100%, 20% 100%, 50% 80%); } 100% { clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%); } }
+@keyframes neural-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
